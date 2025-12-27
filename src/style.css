@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #1a1a2e;
+  color: #eee;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#app {
+  text-align: center;
+  padding: 2rem;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #a0a0a0;
+}
+
+#word-cloud {
+  background: #16213e;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+#loading {
+  color: #666;
+  font-style: italic;
+}
+
+#loading.hidden {
+  display: none;
+}
