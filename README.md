@@ -2,6 +2,8 @@
 
 A word cloud visualization of the complete works of Shakespeare, built with D3.js and d3-cloud.
 
+**[Live Demo](https://matanshavit.github.io/shakespeare-word-cloud/)**
+
 ![Screenshot](screenshot.png)
 
 ## Features
