@@ -1,5 +1,6 @@
 import { loadShakespeare } from './data.js';
 import { processText } from './processor.js';
+import { renderWordCloud } from './cloud.js';
 
 async function init() {
   const loadingEl = document.getElementById('loading');
@@ -10,11 +11,10 @@ async function init() {
 
     const words = processText(text, 150);
     console.log(`Processed ${words.length} unique words`);
-    console.log('Top 10:', words.slice(0, 10));
 
     loadingEl.classList.add('hidden');
 
-    // TODO: Generate word cloud
+    renderWordCloud(words);
 
   } catch (error) {
     loadingEl.textContent = `Error: ${error.message}`;
