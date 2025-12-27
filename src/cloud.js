@@ -11,7 +11,11 @@ const HEIGHT = 600;
  */
 export function renderWordCloud(words, containerId = 'word-cloud') {
   const container = document.getElementById(containerId);
-  container.innerHTML = '';  // Clear any existing content
+  container.innerHTML = '';
+
+  const tooltip = document.getElementById('tooltip');
+  const tooltipWord = tooltip.querySelector('.word');
+  const tooltipCount = tooltip.querySelector('.count');
 
   // Calculate font size scale
   const maxFreq = Math.max(...words.map(w => w.size));
@@ -30,7 +34,8 @@ export function renderWordCloud(words, containerId = 'word-cloud') {
     .words(words.map(d => ({
       text: d.text,
       size: d.size,
-      fontSize: fontScale(d.size)
+      fontSize: fontScale(d.size),
+      originalSize: d.size  // Keep original frequency
     })))
     .padding(3)
     .rotate(() => (Math.random() > 0.5 ? 0 : 90))
@@ -59,8 +64,26 @@ export function renderWordCloud(words, containerId = 'word-cloud') {
       .style('cursor', 'pointer')
       .attr('text-anchor', 'middle')
       .attr('transform', d => `translate(${d.x},${d.y})rotate(${d.rotate})`)
-      .text(d => d.text);
+      .text(d => d.text)
+      .on('mouseenter', handleMouseEnter)
+      .on('mousemove', handleMouseMove)
+      .on('mouseleave', handleMouseLeave);
 
     console.log(`Rendered ${words.length} words`);
+  }
+
+  function handleMouseEnter(event, d) {
+    tooltipWord.textContent = d.text;
+    tooltipCount.textContent = `${d.originalSize.toLocaleString()} occurrences`;
+    tooltip.classList.add('visible');
+  }
+
+  function handleMouseMove(event) {
+    tooltip.style.left = `${event.clientX + 15}px`;
+    tooltip.style.top = `${event.clientY + 15}px`;
+  }
+
+  function handleMouseLeave() {
+    tooltip.classList.remove('visible');
   }
 }

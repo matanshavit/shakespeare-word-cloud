@@ -39,3 +39,40 @@ h1 {
 #loading.hidden {
   display: none;
 }
+
+/* Tooltip */
+#tooltip {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 1000;
+}
+
+#tooltip.visible {
+  opacity: 1;
+}
+
+#tooltip .word {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#tooltip .count {
+  color: #aaa;
+  font-size: 12px;
+}
+
+/* Word hover state */
+#word-cloud text {
+  transition: opacity 0.15s ease;
+}
+
+#word-cloud text:hover {
+  opacity: 0.7;
+}
