@@ -1,4 +1,4 @@
-const SHAKESPEARE_URL = '/shakespeare.txt';
+const SHAKESPEARE_URL = `${import.meta.env.BASE_URL}shakespeare.txt`;
 
 // Gutenberg standard delimiters
 const START_MARKER = '*** START OF THE PROJECT GUTENBERG EBOOK THE COMPLETE WORKS OF WILLIAM SHAKESPEARE ***';
